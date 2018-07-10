@@ -1,0 +1,15 @@
+server:
+   port: 8002  
+spring: 
+   application: 
+     name: microservice-movie
+eureka: 
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+  client: 
+    service-url:
+       defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix: 
+    enabled: false
